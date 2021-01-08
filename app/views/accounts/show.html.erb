@@ -1,0 +1,6 @@
+<h1><%= @account.name %></h1>
+
+<ul>
+  <li><%= link_to "Edit", edit_account_path(@account) %></li>
+  <li><%= link_to "Destroy", account_path(@account), method: :delete, data: {confirm: "Are you sure?"} %></li>
+</ul>
