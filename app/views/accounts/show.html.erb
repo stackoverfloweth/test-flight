@@ -4,3 +4,46 @@
   <li><%= link_to "Edit", edit_account_path(@account) %></li>
   <li><%= link_to "Destroy", account_path(@account), method: :delete, data: {confirm: "Are you sure?"} %></li>
 </ul>
+
+<h2>Students</h2>
+<% @account.students.each do |student| %>
+  <div class="student-row">
+    <div>
+      <strong>Student:</strong>
+      <%= student.firstName %> <%= student.lastName %>
+    </div>
+
+    <div>
+      <strong>Age:</strong>
+      <%= student.age %>
+    </div>
+
+    <div>
+      <strong>Verified:</strong>
+      <%= check_box_tag name = "verified", value = "1", student.verified, disabled: true %>
+    </div>
+  </div>
+<% end %>
+
+<h2>Add a student:</h2>
+<%= form_with model: [ @account, @account.students.build ] do |form| %>
+  <div>
+    <%= form.label :firstName %><br>
+    <%= form.text_field :firstName %>
+  </div>
+  <div>
+    <%= form.label :lastName %><br>
+    <%= form.text_field :lastName %>
+  </div>
+  <div>
+    <%= form.label :age %><br>
+    <%= form.number_field :age %>
+  </div>
+  <div>
+    <%= form.label :verified %><br>
+    <%= form.check_box :verified %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

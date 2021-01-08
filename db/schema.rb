@@ -10,13 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_07_041520) do
+ActiveRecord::Schema.define(version: 2021_01_08_025617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "account", id: false, force: :cascade do |t|
-  end
 
   create_table "accounts", force: :cascade do |t|
     t.string "name"
@@ -24,4 +21,16 @@ ActiveRecord::Schema.define(version: 2021_01_07_041520) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "students", force: :cascade do |t|
+    t.string "firstName"
+    t.string "lastName"
+    t.integer "age"
+    t.boolean "verified"
+    t.bigint "account_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_students_on_account_id"
+  end
+
+  add_foreign_key "students", "accounts"
 end
