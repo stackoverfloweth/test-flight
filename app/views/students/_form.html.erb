@@ -1,0 +1,22 @@
+<%= form_with model: [ @account, @account.students.build ] do |form| %>
+  <div>
+    <%= form.label :firstName %><br>
+    <%= form.text_field :firstName %>
+  </div>
+  <div>
+    <%= form.label :lastName %><br>
+    <%= form.text_field :lastName %>
+  </div>
+  <div>
+    <%= form.label :age %><br>
+    <%= form.number_field :age %>
+  </div>
+  <div>
+    <%= form.label :verified %><br>
+    <%= form.check_box :verified %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
