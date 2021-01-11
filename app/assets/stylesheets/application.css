@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+ label, input[type="submit"] {
+     display: block;
+     margin-top: 10px;
+ }
+
+ .text-errors {
+     color: red;
+ }

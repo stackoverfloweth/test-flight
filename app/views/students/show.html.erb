@@ -1,15 +1,7 @@
 <h1><%= @student.firstName %> <%= @student.lastName %></h1>
 
-<div>
-  <strong>Age:</strong>
-  <%= @student.age %>
-</div>
+<%= render "form", student: @student %>
 
-<div>
-  <strong>Verified:</strong>
-  <%= check_box_tag name = "verified", value = "1", @student.verified, disabled: true %>
-</div>
-
-<%= link_to 'Delete Student', [@account, @student],
+<%= button_to 'Delete Student', [@account, @student],
               method: :delete,
               data: { confirm: "Are you sure?" } %>

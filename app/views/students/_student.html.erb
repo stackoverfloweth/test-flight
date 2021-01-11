@@ -1,6 +1,6 @@
 <div>
     <strong>Student:</strong>
-    <%= student.firstName %> <%= student.lastName %>
+    <%= link_to "#{student.firstName} #{student.lastName}", [@account, student]%>
 </div>
 
 <div>
@@ -12,4 +12,3 @@
     <strong>Verified:</strong>
     <%= check_box_tag name = "verified", value = "1", student.verified, disabled: true %>
 </div>
-<%= link_to "View Student", [@account, student]%>

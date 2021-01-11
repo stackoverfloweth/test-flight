@@ -1,9 +1,9 @@
 <%= form_with model: account do |form| %>
   <div>
-    <%= form.label :name %><br>
+    <%= form.label :name %>
     <%= form.text_field :name %>
     <% account.errors.full_messages_for(:name).each do |message| %>
-      <div><%= message %></div>
+      <div class="text-errors"><%= message %></div>
     <% end %>
   </div>
 

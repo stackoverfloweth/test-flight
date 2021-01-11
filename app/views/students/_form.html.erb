@@ -1,18 +1,27 @@
-<%= form_with model: [ @account, @account.students.build ] do |form| %>
+<%= form_with model: [ @account, student ] do |form| %>
   <div>
-    <%= form.label :firstName %><br>
+    <%= form.label :firstName %>
     <%= form.text_field :firstName %>
+    <% student.errors.full_messages_for(:firstName).each do |message| %>
+      <div class="text-errors"><%= message %></div>
+    <% end %>
   </div>
   <div>
-    <%= form.label :lastName %><br>
+    <%= form.label :lastName %>
     <%= form.text_field :lastName %>
+    <% student.errors.full_messages_for(:lastName).each do |message| %>
+      <div class="text-errors"><%= message %></div>
+    <% end %>
   </div>
   <div>
-    <%= form.label :age %><br>
+    <%= form.label :age %>
     <%= form.number_field :age %>
+    <% student.errors.full_messages_for(:age).each do |message| %>
+      <div class="text-errors"><%= message %></div>
+    <% end %>
   </div>
   <div>
-    <%= form.label :verified %><br>
+    <%= form.label :verified %>
     <%= form.check_box :verified %>
   </div>
 

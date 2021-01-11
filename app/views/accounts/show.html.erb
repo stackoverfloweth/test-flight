@@ -1,6 +1,6 @@
 <h1><%= @account.name %></h1>
 
-<%= link_to 'Delete Account', @account,
+<%= button_to 'Delete Account', @account,
               method: :delete,
               data: { confirm: "Are you sure?" } %>
 

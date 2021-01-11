@@ -15,31 +15,26 @@ class StudentsController < ApplicationController
     @student = @account.students.new(student_params)
     
     if(@student.save)
-      redirect_to [@account, @student]
+      redirect_to @account
     else
       render :new
     end
   end
 
-  def edit
-    @account = Account.find(params[:account_id])
-    @student = @account.students.build(student_params)
-  end
-
   def update
     @account = Account.find(params[:account_id])
-    @student = @account.students.build(student_params)
+    @student = @account.students.find(params[:id])
 
-    if(@account.update(student_params))
-      redirect_to [@account, @student]
+    if(@student.update(student_params))
+      redirect_to @account
     else
-      render :edit
+      render :show
     end
   end
 
   def destroy
     @account = Account.find(params[:account_id])
-    @student = Student.find(params[:id])
+    @student = @account.students.find(params[:id])
     @student.destroy
 
     redirect_to @account
