@@ -21,8 +21,11 @@
     <% end %>
   </div>
   <div>
-    <%= form.label :verified %>
-    <%= form.check_box :verified %>
+    <%= form.label :primary %>
+    <%= form.check_box :primary %>
+    <% student.errors.full_messages_for(:primary).each do |message| %>
+      <div class="text-errors"><%= message %></div>
+    <% end %>
   </div>
 
   <div>

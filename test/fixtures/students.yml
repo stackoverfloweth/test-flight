@@ -4,12 +4,12 @@ one:
   firstName: MyString
   lastName: MyString
   age: 1
-  verified: false
+  primary: false
   account: one
 
 two:
   firstName: MyString
   lastName: MyString
   age: 1
-  verified: false
+  primary: false
   account: two
