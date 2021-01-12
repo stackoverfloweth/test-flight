@@ -1,21 +1,20 @@
 class ContactsController < ApplicationController
 
+  before_action :set_account
+
   def show
-    @account = Account.find(params[:account_id])
     @contact = @account.contacts.find(params[:id])
   end
 
   def new
-    @account = Account.find(params[:account_id])
     @contact = @account.contacts.new
     @contact.primary = !@account.contacts.exists?(primary: true)
   end
   
   def create
-    @account = Account.find(params[:account_id])
     @contact = @account.contacts.new(contact_params)
     
-    if(@contact.save)
+    if @contact.save
       redirect_to @account
     else
       render :new
@@ -23,10 +22,9 @@ class ContactsController < ApplicationController
   end
 
   def update
-    @account = Account.find(params[:account_id])
     @contact = @account.contacts.find(params[:id])
 
-    if(@contact.update(contact_params))
+    if @contact.update(contact_params)
       redirect_to @account
     else
       render :show
@@ -34,10 +32,8 @@ class ContactsController < ApplicationController
   end
 
   def destroy
-    @account = Account.find(params[:account_id])
     @contact = @account.contacts.find(params[:id])
-
-    if(@contact.primary)
+    if @contact.primary
       @contact.errors.add(:primary, :invalid, message: "cannot be deleted")
       render :show
     else
@@ -47,8 +43,14 @@ class ContactsController < ApplicationController
   end
   
   private
-    def contact_params
-      params[:contact][:phone] = params[:contact][:phone].tr('^0-9', '')
-      params.require(:contact).permit(:firstName, :lastName, :email, :phone, :primary)
-    end
+
+  def contact_params
+    params[:contact][:phone] = params[:contact][:phone].tr('^0-9', '')
+    params.require(:contact).permit(:firstName, :lastName, :email, :phone, :primary)
+  end
+
+  def set_account 
+    @account = Account.find(params[:account_id])
+  end
+
 end
