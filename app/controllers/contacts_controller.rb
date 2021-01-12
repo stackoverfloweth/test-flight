@@ -44,7 +44,6 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-    params[:contact][:phone] = params[:contact][:phone].tr('^0-9', '')
     params.require(:contact).permit(:firstName, :lastName, :email, :phone, :primary)
   end
 

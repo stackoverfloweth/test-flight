@@ -12,7 +12,7 @@ class Contact < ApplicationRecord
   # First step would be to identify what field(s) we could use to enforce global uniqueness.
   # Seems like we could use the Phone number, email address or both.    
   validates_uniqueness_of :phone
-  validates_uniqueness_of :emailex
+  validates_uniqueness_of :email
 
   before_validation :sanitize_phone_number
   
