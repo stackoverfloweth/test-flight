@@ -36,9 +36,14 @@ class ContactsController < ApplicationController
   def destroy
     @account = Account.find(params[:account_id])
     @contact = @account.contacts.find(params[:id])
-    @contact.destroy
 
-    redirect_to @account
+    if(@contact.primary)
+      @contact.errors.add(:primary, :invalid, message: "cannot be deleted")
+      render :show
+    else
+      @contact.destroy
+      redirect_to @account
+    end
   end
   
   private
