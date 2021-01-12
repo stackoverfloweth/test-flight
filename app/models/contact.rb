@@ -1,6 +1,7 @@
 class Contact < ApplicationRecord
   belongs_to :account
 
+  # Ruby convention uses snake_case for variables, symbols, etc.
   validates_presence_of :firstName, :lastName, :phone, :email
   validates_length_of :phone, is: 10
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
