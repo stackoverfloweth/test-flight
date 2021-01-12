@@ -8,4 +8,14 @@ class Contact < ApplicationRecord
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   
   validates_with SinglePrimaryValidator
+
+  before_validation :sanitize_phone_number
+
+
+  private 
+
+  def sanitize_phone_number
+    self.phone = phone.gsub(/\W/, '')
+  end
+
 end

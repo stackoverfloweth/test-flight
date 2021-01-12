@@ -12,7 +12,7 @@ class StudentsController < ApplicationController
   def create
     @student = @account.students.new(student_params)
     
-    if(@student.save)
+    if @student.save
       redirect_to @account
     else
       render :new
