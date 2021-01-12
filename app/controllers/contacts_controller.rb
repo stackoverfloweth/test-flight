@@ -8,6 +8,7 @@ class ContactsController < ApplicationController
   def new
     @account = Account.find(params[:account_id])
     @contact = @account.contacts.new
+    @contact.primary = !@account.contacts.exists?(primary: true)
   end
   
   def create
