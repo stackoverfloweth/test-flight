@@ -1,12 +1,13 @@
 class AccountsController < ApplicationController
   
+  before_action :set_account, only: [:show, :edit, :update, :destroy]
+
   def index
     @accounts = Account.all
   end
 
   def show
-    @account = Account.find(params[:id])
-    if(!@account.contacts.exists?(primary:true))
+    unless @account.primary_contact
       @account.errors.add(:base, :invalid, message: "Account must have primary contact!")
     end
   end
@@ -25,14 +26,10 @@ class AccountsController < ApplicationController
     end
   end
 
-  def edit
-    @account = Account.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @account = Account.find(params[:id])
-
-    if(@account.update(account_params))
+    if @account.update(account_params)
       redirect_to @account
     else
       render :edit
@@ -40,16 +37,18 @@ class AccountsController < ApplicationController
   end
 
   def destroy
-    @account = Account.find(params[:id])
     @account.destroy
-    
     redirect_to root_path
   end
 
-
   private 
-    def account_params
-      params.require(:account).permit(:name)
-    end
+  
+  def account_params
+    params.require(:account).permit(:name)
+  end
+
+  def set_account 
+    @account = Account.find(params[:id])
+  end
 
 end

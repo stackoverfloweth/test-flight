@@ -1,20 +1,18 @@
 class StudentsController < ApplicationController
+  before_action :set_account
 
   def show
-    @account = Account.find(params[:account_id])
     @student = @account.students.find(params[:id])
   end
 
   def new
-    @account = Account.find(params[:account_id])
     @student = @account.students.new
   end
   
   def create
-    @account = Account.find(params[:account_id])
     @student = @account.students.new(student_params)
     
-    if(@student.save)
+    if @student.save
       redirect_to @account
     else
       render :new
@@ -22,10 +20,9 @@ class StudentsController < ApplicationController
   end
 
   def update
-    @account = Account.find(params[:account_id])
     @student = @account.students.find(params[:id])
 
-    if(@student.update(student_params))
+    if @student.update(student_params)
       redirect_to @account
     else
       render :show
@@ -33,7 +30,6 @@ class StudentsController < ApplicationController
   end
 
   def destroy
-    @account = Account.find(params[:account_id])
     @student = @account.students.find(params[:id])
     @student.destroy
 
@@ -41,7 +37,13 @@ class StudentsController < ApplicationController
   end
   
   private
+
     def student_params
       params.require(:student).permit(:firstName, :lastName, :age, :primary)
     end
+
+    def set_account 
+      @account = Account.find(params[:account_id])
+    end
 end
+
