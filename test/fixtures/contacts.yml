@@ -3,11 +3,15 @@
 one:
   firstName: MyString
   lastName: MyString
-  age: 1
+  phone: MyString
+  email: MyString
+  primary: false
   account: one
 
 two:
   firstName: MyString
   lastName: MyString
-  age: 1
+  phone: MyString
+  email: MyString
+  primary: false
   account: two
