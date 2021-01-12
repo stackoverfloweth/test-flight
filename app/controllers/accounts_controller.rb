@@ -7,7 +7,7 @@ class AccountsController < ApplicationController
   end
 
   def show
-    if !@account.contacts.exists?(primary:true)
+    unless @account.primary_contact
       @account.errors.add(:base, :invalid, message: "Account must have primary contact!")
     end
   end
@@ -29,7 +29,6 @@ class AccountsController < ApplicationController
   def edit; end
 
   def update
-
     if @account.update(account_params)
       redirect_to @account
     else
@@ -39,10 +38,8 @@ class AccountsController < ApplicationController
 
   def destroy
     @account.destroy
-    
     redirect_to root_path
   end
-
 
   private 
   

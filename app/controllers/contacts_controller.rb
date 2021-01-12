@@ -8,7 +8,6 @@ class ContactsController < ApplicationController
 
   def new
     @contact = @account.contacts.new
-    @contact.primary = !@account.contacts.exists?(primary: true)
   end
   
   def create

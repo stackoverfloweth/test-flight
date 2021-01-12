@@ -15,5 +15,5 @@
 
 <div>
     <strong>Primary:</strong>
-    <%= check_box_tag name = "primary", value = "1", contact.primary, disabled: true %>
+    <%= check_box_tag("primary", value = "1", contact.is_primary?, disabled: true) %>
 </div>
