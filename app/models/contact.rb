@@ -5,8 +5,8 @@ class Contact < ApplicationRecord
   validates_presence_of :firstName, :lastName, :phone, :email
   validates_length_of :phone, is: 10
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates_with SinglePrimaryValidator
-
+  validates_uniqueness_of :primary, scope: :account_id, conditions: -> { where(primary: true) } 
+  
   before_validation :sanitize_phone_number
   
   
