@@ -3,7 +3,8 @@ class Contact < ApplicationRecord
 
   validates :firstName, presence: true
   validates :lastName, presence: true
-  validates :phone, presence: true, format: { with: /\d{3}-\d{3}-\d{4}/ }
+  validates :phone, presence: true
+  validates_length_of :phone, is: 10
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   
   validates_with SinglePrimaryValidator

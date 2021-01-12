@@ -22,7 +22,7 @@
   </div>
   <div>
     <%= form.label :phone %>
-    <%= form.text_field :phone %>
+    <%= form.text_field :phone, placeholder: 'xxx-xxx-xxxx', value: number_to_phone(@contact.phone) %>
     <% contact.errors.full_messages_for(:phone).each do |message| %>
       <div class="text-errors"><%= message %></div>
     <% end %>
