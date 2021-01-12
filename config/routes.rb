@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   resources :accounts do
     resources :students
+    resources :contacts
   end
 end

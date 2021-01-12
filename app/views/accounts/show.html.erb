@@ -4,9 +4,18 @@
               method: :delete,
               data: { confirm: "Are you sure?" } %>
 
+<h2>Contacts</h2>
+<% @account.contacts.each do |contact| %>
+  <div class="margin-bottom">
+    <%= render contact %>
+  </div>
+<% end %>
+
+<%= link_to "Add Contact", new_account_contact_path(@account) %>
+
 <h2>Students</h2>
 <% @account.students.each do |student| %>
-  <div class="student-row">
+  <div class="margin-bottom">
     <%= render student %>
   </div>
 <% end %>

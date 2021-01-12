@@ -1,0 +1,41 @@
+<%= form_with model: [ @account, contact ] do |form| %>
+  <div>
+    <%= form.label :firstName %>
+    <%= form.text_field :firstName %>
+    <% contact.errors.full_messages_for(:firstName).each do |message| %>
+      <div class="text-errors"><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :lastName %>
+    <%= form.text_field :lastName %>
+    <% contact.errors.full_messages_for(:lastName).each do |message| %>
+      <div class="text-errors"><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+    <% contact.errors.full_messages_for(:email).each do |message| %>
+      <div class="text-errors"><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+    <% contact.errors.full_messages_for(:phone).each do |message| %>
+      <div class="text-errors"><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :primary %>
+    <%= form.check_box :primary %>
+    <% contact.errors.full_messages_for(:primary).each do |message| %>
+      <div class="text-errors"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

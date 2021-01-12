@@ -1,0 +1,7 @@
+<h1><%= @contact.firstName %> <%= @contact.lastName %></h1>
+
+<%= render "form", contact: @contact %>
+
+<%= button_to 'Delete contact', [@account, @contact],
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>

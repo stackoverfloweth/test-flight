@@ -1,0 +1,19 @@
+<div>
+    <strong>Contact:</strong>
+    <%= link_to "#{contact.firstName} #{contact.lastName}", [@account, contact]%>
+</div>
+
+<div>
+    <strong>Phone #:</strong>
+    <%= contact.phone %>
+</div>
+
+<div>
+    <strong>Email Address:</strong>
+    <%= contact.email %>
+</div>
+
+<div>
+    <strong>Primary:</strong>
+    <%= check_box_tag name = "primary", value = "1", contact.primary, disabled: true %>
+</div>
