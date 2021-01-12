@@ -6,6 +6,9 @@ class AccountsController < ApplicationController
 
   def show
     @account = Account.find(params[:id])
+    if(!@account.contacts.exists?(primary:true))
+      @account.errors.add(:base, :invalid, message: "Account must have primary contact!")
+    end
   end
 
   def new

@@ -1,5 +1,9 @@
 <h1><%= @account.name %></h1>
 
+<% @account.errors.full_messages.each do |message| %>
+  <div class="alert-errors"><%= message %></div>
+<% end %>
+
 <%= button_to 'Delete Account', @account,
               method: :delete,
               data: { confirm: "Are you sure?" } %>
